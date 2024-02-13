@@ -8,6 +8,12 @@ function verifyInput(event){
     form.classList.add("was-validated")
     let validInput = true;
     
+    if(document.querySelectorAll(".valid-feedback, .invalid-feedback")){
+        document.querySelectorAll(".valid-feedback, .invalid-feedback").forEach(function(element){
+            element.remove()
+        })
+    }
+    
     // 4. In verifyInput(), construct rules for each input:
     
     let fname = document.querySelector("#validationCustom01")
@@ -72,11 +78,6 @@ function verifyInput(event){
         validInput = false;
     }
     
-    if(document.querySelectorAll(".valid-feedback, .invalid-feedback")){
-        document.querySelectorAll(".valid-feedback, .invalid-feedback").forEach(function(element){
-            element.remove()
-        })
-    }
     
     if(fname.value.length < 8){
         // console.log("Invalid Firstname")
