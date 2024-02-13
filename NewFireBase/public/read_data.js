@@ -1,10 +1,10 @@
 var ref = firebase.database().ref("MyList")
 
-let readList = () => {
+let readList = (snapshot) => {
     document.getElementById("main-content").innerHTML = "";
 
-    const currentUser = firebase.auth().currentUser;
-    userListRef.child(currentUser.uid).once("value").then((snapshot) => {
+    // const currentUser = firebase.auth().currentUser;
+    // userListRef.child(currentUser.uid).once("value").then((snapshot) => {
         snapshot.forEach((data) => {
             var id = data.key;
             var title = data.val().title;
@@ -24,7 +24,7 @@ let readList = () => {
         document.querySelectorAll("button.btn-delete").forEach((btn) => {
             btn.addEventListener("click", deleteList);
         })
-    })
+    // })
 }
 
 let deleteList = (event) => {
@@ -37,7 +37,7 @@ let deleteList = (event) => {
 let getList = (user) => {
     if (user) {
         userListRef.child(user.uid).on("value", (snapshot) => {
-            readList();
+            readList(snapshot);
         })
     }
 }
@@ -47,6 +47,7 @@ const loginItems = document.querySelectorAll(".logged-in")
 
 let setupUI = (user) => {
     if(user) {
+        document.querySelector("#user-profile-name").innerHTML = user.email;
         loginItems.forEach((item) => (item.style.display = "inline-block"));
         logoutItems.forEach((item) => (item.style.display = "none"));
     } else {

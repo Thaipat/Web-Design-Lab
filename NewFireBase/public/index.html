@@ -15,7 +15,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a href="#" class="navbar-brand">Lab 10 - Javascript</a>
+      <a href="#" class="navbar-brand">Lab 11 - Basic Tic-Tac-Toe</a>
       <nav>
         <button type="button" id="btnSignUp" class="btn btn-outline-light logged-out" data-bs-toggle="modal" data-bs-target="#modal-signup">
           <i class="bi bi-person-plus-fill"></i> Sign Up
@@ -23,11 +23,14 @@
         <button type="button" id="btnLogin" class="btn btn-outline-light logged-out" data-bs-toggle="modal" data-bs-target="#modal-login">
           <i class="bi bi-box-arrow-in-right"></i> Log in
         </button>
-        <button type="button" id="btnGoogle" class="btn btn-outline-light logged-out">
+        <!-- <button type="button" id="btnGoogle" class="btn btn-outline-light logged-out">
           <i class="bi bi-google"></i> Google
-        </button>
-        <img id="profileImg" class="logged-in" src="" style="width: 34px;border-radius: 100%;">
-        <span id="profileName" class="logged-in" style="color: white;"></span>
+        </button> -->
+        <span class="logged-in">
+          <span id="user-profile-name" class="display-name text-white"></span>
+        </span>
+        <!-- <img id="profileImg" class="logged-in" src="" style="width: 34px;border-radius: 100%;">
+        <span id="profileName" class="logged-in" style="color: white;"></span> -->
         <button type="button" id="btnLogout" class="btn btn-outline-light logged-in">
           <i class="bi bi-box-arrow-right"></i> Logout
         </button>
@@ -35,7 +38,7 @@
     </div>
   </nav>
 
-  <div class="container p-5 justify-content-center logged-in">
+  <!-- <div class="container p-5 justify-content-center logged-in">
     <div class="d-flex">
       <div class="me-3">
         <h1>My List</h1>
@@ -58,6 +61,75 @@
       </span>
       <input type="text" id="toDoInput" class="form-control" placeholder="Enter the list title" aria-label="Username" aria-describedby="basic-addon1">
       <button type="submit" class="btn btn-warning" onclick="addList()">Submit</button>
+    </div>
+  </div> -->
+
+  <h1 class="display-1 text-center">Tic-Tac-Toe</h1>
+  <div class="container logged-in">
+    <form class="form-inline row">
+      <div class="form-group mb-2 row col-10">
+        <label for="inputPlayer-x" class="col-form-label col-2">Players X:</label>
+        <div class="col-10">
+          <input readonly type="text" class="form-control" id="inputPlayer-x" placeholder="Player X">
+        </div>
+      </div>
+      <div class="form-group mb-2 col-2">
+        <button type="button" id="btnJoin-x" class="btn btn-primary btn-join">Join</button>
+        <button type="button" id="btnCancel-x" class="btn btn-secondary btn-cancel-join-game">Cancel</button>
+      </div>
+    </form>
+    <form class="form-inline row">
+      <div class="form-group mb-2 row col-10">
+        <label for="inputPlayer-o" class="col-form-label col-2">Players O:</label>
+        <div class="col-10">
+          <input readonly type="text" class="form-control" id="inputPlayer-o" placeholder="Player O">
+        </div>
+      </div>
+      <div class="form-group mb-2 col-2">
+        <button type="button" id="btnJoin-o" class="btn btn-primary btn-join">Join</button>
+        <button type="button" id="btnCancel-o" class="btn btn-secondary btn-cancel-join-game">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="container d-flex justify-content-center mb-2">
+    <button type="button" id="btnStartGame" class="btn btn-success mx-1 logged-in" disabled>START GAME</button>
+    <button type="button" id="btnTerminateGame" class="btn btn-warning mx-1 logged-in" disabled>END GAME</button>
+  </div>
+
+  <div class="container">
+    <div class="row" id="row-1">
+      <div class="col border justify-content-center align-item-center table-col" id="row-1-col-1">
+        <p class="display-4 text-center"></p>
+      </div>
+      <div class="col border justify-content-center align-item-center table-col" id="row-1-col-2">
+        <p class="display-4 text-center"></p>
+      </div>
+      <div class="col border justify-content-center align-item-center table-col" id="row-1-col-3">
+        <p class="display-4 text-center"></p>
+      </div>
+    </div>
+    <div class="row" id="row-2">
+      <div class="col border justify-content-center align-item-center table-col" id="row-2-col-1">
+        <p class="display-4 text-center"></p>
+      </div>
+      <div class="col border justify-content-center align-item-center table-col" id="row-2-col-2">
+        <p class="display-4 text-center"></p>
+      </div>
+      <div class="col border justify-content-center align-item-center table-col" id="row-2-col-3">
+        <p class="display-4 text-center"></p>
+      </div>
+    </div>
+    <div class="row" id="row-3">
+      <div class="col border justify-content-center align-item-center table-col" id="row-3-col-1">
+        <p class="display-4 text-center"></p>
+      </div>
+      <div class="col border justify-content-center align-item-center table-col" id="row-3-col-2">
+        <p class="display-4 text-center"></p>
+      </div>
+      <div class="col border justify-content-center align-item-center table-col" id="row-3-col-3">
+        <p class="display-4 text-center"></p>
+      </div>
     </div>
   </div>
 
@@ -124,5 +196,6 @@
   <script src="insert_data.js"></script>
   <script src="read_data.js"></script>
   <script src="auth.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>

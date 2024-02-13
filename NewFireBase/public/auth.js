@@ -1,15 +1,15 @@
-var provider = new firebase.auth.GoogleAuthProvider();
+// var provider = new firebase.auth.GoogleAuthProvider();
 
-const btnGoogle = document.querySelector("#btnGoogle");
-btnGoogle.addEventListener("click", function(){
-    firebase.auth().signInWithPopup(provider)
-    .then(() => {
-        alert("Login Complete!")
-    }).catch((error) => {
-        var errorMessage = error.message;
-        alert(errorMessage)
-    });
-})
+// const btnGoogle = document.querySelector("#btnGoogle");
+// btnGoogle.addEventListener("click", function(){
+//     firebase.auth().signInWithPopup(provider)
+//     .then(() => {
+//         alert("Login Complete!")
+//     }).catch((error) => {
+//         var errorMessage = error.message;
+//         alert(errorMessage)
+//     });
+// })
 
 const signupForm = document.querySelector("#signup-form")
 signupForm.addEventListener("submit", createUser);
@@ -21,7 +21,6 @@ function createUser(event){
     event.preventDefault();
     const email = signupForm["input-email-signup"].value;
     const password = signupForm["input-password-signup"].value;
-
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(() => {
         signupFeedback.style = "color: green";
@@ -49,10 +48,29 @@ btnCancels.forEach((btn) => {
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log(user);
-        getList(user)
-        document.querySelector("#profileImg").src = user.photoURL == null ? "" : user.photoURL
-        document.querySelector("#profileName").innerText = user.displayName
+        console.log("User :", user);
+        // getList(user);
+        // document.querySelector("#profileImg").src = user.photoURL == null ? "" : user.photoURL
+        // document.querySelector("#profileName").innerText = user.displayName
+        firebase.database().ref("Game").on("value", (snapshot) => {
+            let checkJoin;
+            snapshot.forEach((data) => {
+                const gameInfo = data.val();
+                Object.keys(gameInfo).forEach((key) => {
+                    if(gameInfo[key] == user.email){
+                        checkJoin = true;
+                    }
+                })
+            })
+            if (checkJoin){
+                btnJoins.forEach((btnJoin) => {
+                    btnJoin.disabled = true
+                })
+            } else {
+                document.getElementById("inputPlayer-o").value == "" ? document.querySelector("#btnJoin-o").disabled = false : document.querySelector("#btnJoin-o").disabled = true
+                document.getElementById("inputPlayer-x").value == "" ? document.querySelector("#btnJoin-x").disabled = false : document.querySelector("#btnJoin-x").disabled = true
+            }
+        })
     }
     setupUI(user);
 })
