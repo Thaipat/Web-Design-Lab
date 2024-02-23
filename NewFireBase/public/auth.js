@@ -10,6 +10,7 @@
 //         alert(errorMessage)
 //     });
 // })
+const accountRef = firebase.database().ref("Account");
 
 const signupForm = document.querySelector("#signup-form")
 signupForm.addEventListener("submit", createUser);
@@ -25,6 +26,10 @@ function createUser(event){
     .then(() => {
         signupFeedback.style = "color: green";
         signupFeedback.innerHTML = "<i class='bi bi-check-circle-fill'></i> Signup completed."
+        accountRef.push({
+            email: email,
+            score: 0
+        })
         setTimeout(() => {
             signupForm.reset();
             signupFeedback.innerHTML = "";
