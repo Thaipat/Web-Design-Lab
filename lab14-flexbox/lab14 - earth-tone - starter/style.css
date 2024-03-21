@@ -1,0 +1,191 @@
+@font-face {
+  font-family: kanit;
+  src: url(font/Kanit/Kanit-Light.ttf);
+}
+
+@font-face {
+  font-family: lobster;
+  src: url(font/Lobster/Lobster-Regular.ttf);
+}
+
+/* CSS สามารถแก้ได้อย่างอิสระจนหาที่สุดไม่ได้เลย นะครับ ^^ */
+:root {
+  --color1: #ba6c39;
+  --color2: #f2e8dc;
+  --color3: #f7d9c9;
+
+  --menu1: #f7f3f0;
+  --menu2: #ecd3ce;
+  --menu3: #f8d8c8;
+}
+
+body {
+  margin: 0;
+  font-family: kanit;
+  background-color: var(--color3);
+}
+
+nav {
+  /* Navbar */
+  width: 100%;
+  height: 100px;
+  background-color: white;
+}
+
+.content {
+  width: 100%;
+  height: 90vh;
+  box-sizing: border-box;
+}
+
+.content-1 {
+  font-family: lobster;
+  display: flex;
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  background-color: #f8f4f1;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-nav {
+  display: flex;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.menu {
+  background: #eee;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-grow: 1;
+}
+
+.title {
+  flex-grow: 1;
+  color: #ba6c39;
+  font-size: 25px;
+}
+
+.content-1-img {
+  position: relative;
+  flex: 1;
+  background: #f2e8dc;
+}
+
+.img1 {
+  position: absolute;
+  top: 7%;
+  left: 15%;
+  width: 50%;
+  z-index: 1;
+}
+
+.img2 {
+  position: absolute;
+  width: 50%;
+  z-index: 2;
+  top: 33%;
+  left: 30%;
+}
+
+.content-1-text {
+  display: flex;
+  height: 100%;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  font-size: 200%;
+}
+
+.content-1-text span{
+  text-align: center;
+  width: 50%;
+}
+
+.content-2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.side-tab-1{
+  transform: rotateZ(-90deg);
+  color: #ba6c39;
+  font-weight: bold;
+}
+
+.side-tab-2{
+  transform: rotateZ(90deg);
+  color: #ba6c39;
+  font-weight: bold;
+}
+
+.content-2-menu{
+  display: flex;
+  height: 18vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content-2-menu div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 17vw;
+}
+
+.content-2-menu .menu1{
+  background: #f7f3f0;
+}
+
+.content-2-menu .menu2{
+  background: #ecd2ce;
+}
+
+.content-2-menu .menu3{
+  background: #f9d7c8;
+}
+
+.content-3{
+  display: flex;
+}
+
+.content-3 .image-container{
+  flex-basis: 50%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 5vw;
+}
+
+.img4{
+  height: 65%;
+  width: 40%;
+  border: 5px solid white;
+}
+
+.content-3 .text-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 50%;
+  font-size: 200%;
+}
+
+.text-container span{
+  display: flex;
+  width: 80%;
+  text-align: center;
+}

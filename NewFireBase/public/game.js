@@ -42,6 +42,8 @@ function getGameInfo(snapshot) {
         let turn = data.val().turn
         let table = data.val().table
         let userwin = data.val().userwin
+        let userxid = data.val().userxid
+        let useroid = data.val().useroid
         Object.keys(gameInfo).forEach((key) => {
             switch (key) {
                 case "userxemail":
@@ -117,9 +119,9 @@ function getGameInfo(snapshot) {
                     accountRef.once("value").then((snapshot) => {
                         snapshot.forEach((data) => {
                             let currentUser = firebase.auth().currentUser
-                            let accounteamil = data.val().email
+                            let accountuid = data.val().uid
                             let score = data.val().score
-                            if (currentUser.email == accounteamil) {
+                            if (currentUser.uid == accountuid) {
                                 document.querySelector("#user-profile-score").innerText = `(${score})`
                             }
                         })
@@ -204,8 +206,24 @@ function addTableListener(event) {
             let currentUser = firebase.auth().currentUser
             let turn = data.val().turn
             let userwin = data.val().userwin
-            table = data.val().table
-            table[event.target.dataset.boxid] = turn
+            let userxid = data.val().userxid
+            let useroid = data.val().useroid
+            console.log(table[event.target.dataset.boxid])
+            if (firebase.auth().currentUser.uid == data.val().userxid && turn == "X" && table[event.target.dataset.boxid] != undefined) {
+                table = data.val().table
+                table[event.target.dataset.boxid] = turn
+                gameRef.child("game-1").update({
+                    table: table,
+                    turn: "O"
+                })
+            } else if (firebase.auth().currentUser.uid == data.val().useroid && turn == "O" && table[event.target.dataset.boxid] != undefined) {
+                table = data.val().table
+                table[event.target.dataset.boxid] = turn
+                gameRef.child("game-1").update({
+                    table: table,
+                    turn: "X"
+                })
+            }
             if (table[0] == table[1] && table[1] == table[2] ||
                 table[3] == table[4] && table[4] == table[5] ||
                 table[6] == table[7] && table[7] == table[8] ||
@@ -217,9 +235,9 @@ function addTableListener(event) {
                 accountRef.once("value").then((snapshot) => {
                     snapshot.forEach((data) => {
                         let accountid = data.key
-                        let email = data.val().email
+                        let uid = data.val().uid
                         let score = data.val().score
-                        if (email == currentUser.email && userwin == "") {
+                        if (uid == currentUser.uid && userwin == "") {
                             score += 3
                             if (turn == "X") {
                                 gameRef.child("game-1").update({
@@ -240,32 +258,18 @@ function addTableListener(event) {
                 accountRef.once("value").then((snapshot) => {
                     snapshot.forEach((data) => {
                         let accountid = data.key
-                        let email = data.val().email
+                        let accountuid = data.val().uid
                         let score = data.val().score
-                        if (email == currentUser.email && userwin == "") {
-                            score += 1
-                            gameRef.child("game-1").update({
+                        if (accountuid == userxid || accountuid == useroid) {
+                            accountRef.child(accountid).update({
+                                score: score + 1
+                            }).then(gameRef.child("game-1").update({
                                 userwin: "both"
-                            }).then(accountRef.child(accountid).update({
-                                score: score
                             }))
                         }
                     })
                 })
             }
-
-            if (firebase.auth().currentUser.uid == data.val().userxid && turn == "X" && (table[event.target.dataset.boxid] != undefined || table[event.target.dataset.boxid] != undefined)) {
-                gameRef.child("game-1").update({
-                    table: table,
-                    turn: "O"
-                })
-            } else if (firebase.auth().currentUser.uid == data.val().useroid && turn == "O" && (table[event.target.dataset.boxid] != undefined || table[event.target.dataset.boxid] != undefined)) {
-                gameRef.child("game-1").update({
-                    table: table,
-                    turn: "X"
-                })
-            }
-
         })
     })
 }
@@ -274,9 +278,9 @@ function gameWin() {
     accountRef.once("value").then((snapshot) => {
         snapshot.forEach((data) => {
             let currentUser = firebase.auth().currentUser
-            let accounteamil = data.val().email
+            let accountuid = data.val().uid
             let score = data.val().score
-            if (currentUser.email == accounteamil) {
+            if (currentUser.uid == accountuid) {
                 document.querySelector("#user-profile-score").innerText = `(${score})`
             }
         })

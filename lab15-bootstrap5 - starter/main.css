@@ -1,0 +1,29 @@
+.carousel,
+.carousel-inner,
+.carousel-item > img {
+  height: 250px;
+}
+
+.carousel-item > img {
+  object-fit: cover;
+}
+
+.card {
+  margin: auto;
+  max-width: 300px;
+}
+
+footer {
+  font-weight: 400;
+  color: white;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item > img {
+    height: 500px;
+  }
+}

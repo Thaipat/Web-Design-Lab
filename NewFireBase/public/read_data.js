@@ -50,9 +50,9 @@ let setupUI = (user) => {
         document.querySelector("#user-profile-name").innerHTML = user.email;
         accountRef.once("value").then((snapshot) => {
             snapshot.forEach((data) => {
-                let accounteamil = data.val().email
+                let accountemail = data.val().email
                 let score = data.val().score
-                if (accounteamil == user.email) {
+                if (accountemail == user.email) {
                     document.querySelector("#user-profile-score").innerText = `(${score})`
                 }
             })

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Bootstrap form</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Bootstrap Forms</h1>
+            <p class="lead">Let's work with some pre-styled forms.</p>
+        </div><!-- page-header -->
+
+        <div class="row">
+            <!-- Bootstrap style -->
+            <div class="col-sm-6">
+                <form>
+                    <!-- texual input -->
+                    <div>
+                        <label for="bformName" >Your name</label>
+                        <input type="text" id="bformName" class="form-control">
+                    </div>
+                    <div class="mt-2">
+                        <label for="bformEmail">Email address</label>
+                        <input type="email" id="bformEmail" class="form-control">
+                    </div>
+                    <div class="mt-2">
+                        <label for="bformMessage">Your message</label>
+                        <textarea rows="4" id="bformMessage" class="form-control"></textarea>
+                    </div>
+                    <!-- file input -->
+                    <div class="mt-2">
+                        <label for="bformUploadFile"> Upload your student ID</label>
+                        <input type="file" id="bformUploadFile" class="form-control">
+                    </div>
+                    <!-- checkbox -->
+                    <div class="mt-2">
+                        <input type="checkbox" id="bformCheckbox1" class="form-check-input">
+                        <label for="bformCheckbox1">Checkbox #1</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bformCheckbox2" class="form-check-input">
+                        <label for="bformCheckbox2">Checkbox #2</label>
+                    </div>
+                    <!-- radio -->
+                    <div class="mt-2">
+                        <input type="radio" id="bradio1" name="exampleRadio" class="form-check-input">
+                        <label for="bradio1">Radio input #1</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="bradio2" name="exampleRadio" class="form-check-input">
+                        <label for="bradio2">Radio input #2</label>
+                    </div>
+                    <!-- submit button -->
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </form>
+            </div>
+
+            <!-- No styling -->
+            <div class="col-sm-6">
+                <form>
+                    <!-- texual input -->
+                    <div>
+                        <label for="formName">Your name</label>
+                        <input type="text" id="formName" class="form-control">
+                    </div>
+                    <div class="mt-2">
+                        <label for="formEmail">Email address</label>
+                        <input type="email" id="formEmail" class="form-control">
+                    </div>
+                    <div class="mt-2">
+                        <label for="formMessage">Your message</label>
+                        <textarea rows="4" id="formMessage" class="form-control"></textarea>
+                    </div>
+                    <!-- file input -->
+                    <div class="mt-2">
+                        <label for="formUploadFile"> Upload your student ID</label>
+                        <input type="file" id="formUploadFile" class="form-control">
+                    </div>
+                    <!-- checkbox -->
+                    <div class="mt-2">
+                        <input type="checkbox" id="formCheckbox1" class="form-check-input">
+                        <label for="formCheckbox1">Checkbox #1</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="formCheckbox2" class="form-check-input">
+                        <label for="formCheckbox2">Checkbox #2</label>
+                    </div>
+                    <!-- radio -->
+                    <div class="mt-2">
+                        <input type="radio" id="radio1" name="exampleRadio" class="form-check-input"> 
+                        <label for="radio1">Radio input #1</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="radio2" name="exampleRadio" class="form-check-input">
+                        <label for="radio2">Radio input #2</label>
+                    </div>
+                    <!-- submit button -->
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

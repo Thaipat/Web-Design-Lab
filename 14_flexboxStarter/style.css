@@ -210,27 +210,27 @@ input::-moz-focus-inner {
 /* Colours for each box */
 .box1 {
   background: #1abc9c;
-  /* font-size: 60px; */
+  font-size: 60px;
 }
 
 .box2 {
   background: #3498db;
-  /* font-size: 90px; */
+  font-size: 90px;
 }
 
 .box3 {
   background: #9b59b6;
-  /* font-size: 120px; */
+  font-size: 120px;
 }
 
 .box4 {
   background: #34495e;
-  /* font-size: 150px; */
+  font-size: 150px;
 }
 
 .box5 {
   background: #f1c40f;
-  /* font-size: 180px; */
+  font-size: 180px;
 }
 
 .box6 {
@@ -280,11 +280,18 @@ input::-moz-focus-inner {
 
   /*<------ justify-content, align-items ------>*/
   /* 1. */
+  /* flex-direction: column; */
+
+  /* 2. */
+  flex-direction: column;
+  align-items: center;
+
+  /* 3. */
   /* flex-direction: row-reverse;
   justify-content: end;
   align-items: end; */
 
-  /* 2. */
+  /* 4. */
   /* justify-content: start;
   align-items: center; */
 }
